@@ -16,8 +16,7 @@ const Navbar = () => {
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/analyze', label: 'Analyze' },
-    { href: '/reports', label: 'Reports' },
-    { href: '/username-search', label: 'Username Search' },
+    { href: '/reports', label: 'Reports' }
   ];
 
   const handleNavigation = (href: string) => {
@@ -118,13 +117,13 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              href="https://github.com/yourusername/crimesift"
+              href="https://github.com/crimeSift-CAC-WA-1/front-end"
               target="_blank"
               rel="noopener noreferrer"
               className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
               onClick={() => {
                 setIsMenuOpen(false);
-                handleNavigation('https://github.com/yourusername/crimesift');
+                handleNavigation('https://github.com/crimeSift-CAC-WA-1/front-end');
               }}
             >
               GitHub
