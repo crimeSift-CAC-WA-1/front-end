@@ -16,5 +16,5 @@ export default authMiddleware({
 });
 
 export const config = {
-  matcher: ['/analyze(.*)', '/reports(.*)'], // Protect /analyze and /reports routes
+  matcher: ['/analyze', '/reports'], // Protect /analyze and /reports routes
 };

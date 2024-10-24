@@ -1,19 +1,19 @@
 // ./pages/analyze.tsx
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
   Dialog,
   DialogContent,
   DialogTrigger,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Timeline, TimelineItem } from '@/components/Timeline';
-import Link from 'next/link';
-import Image from 'next/image';
+} from "@/components/ui/dialog";
+import { Timeline, TimelineItem } from "@/components/Timeline";
+import Link from "next/link";
+import Image from "next/image";
 import {
   ChevronDown,
   ChevronUp,
@@ -23,10 +23,10 @@ import {
   AlertCircle,
   Maximize2,
   Download,
-} from 'lucide-react';
-import axios from 'axios';
-import { useReports, AnalysisResult } from '@/contexts/ReportsContext';
-import { useRouter } from 'next/router';
+} from "lucide-react";
+import axios from "axios";
+import { useReports, AnalysisResult } from "@/contexts/ReportsContext";
+import { useRouter } from "next/router";
 
 interface VideoDialogProps {
   src: string;
@@ -37,7 +37,7 @@ function VideoDialog({ src, platform }: VideoDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="relative aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer group w-1/2 h-1/2 justify-center">
+        <div className="relative aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer group w-1/2 h-1/2 mx-auto">
           <video
             src={src}
             className="w-full h-full object-cover rounded-lg"
@@ -60,17 +60,17 @@ function VideoDialog({ src, platform }: VideoDialogProps) {
 }
 
 export default function AnalyzePage() {
-  const [selectedPlatform, setSelectedPlatform] = useState('discord');
-  const [discordToken, setDiscordToken] = useState('');
-  const [serverId, setServerId] = useState('');
-  const [channelId, setChannelId] = useState('');
+  const [selectedPlatform, setSelectedPlatform] = useState("discord");
+  const [discordToken, setDiscordToken] = useState("");
+  const [serverId, setServerId] = useState("");
+  const [channelId, setChannelId] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [audioFile, setAudioFile] = useState<File | null>(null);
-  const [prompt, setPrompt] = useState('');
+  const [prompt, setPrompt] = useState("");
   const [isPlatformBarOpen, setIsPlatformBarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState('platforms');
+  const [error, setError] = useState("");
+  const [activeTab, setActiveTab] = useState("platforms");
   const [isLoading, setIsLoading] = useState(false);
   const [analysisResults, setAnalysisResults] = useState<AnalysisResult[]>([]);
   const [expandedInstances, setExpandedInstances] = useState<number[]>([]);
@@ -83,18 +83,18 @@ export default function AnalyzePage() {
       setIsMobile(window.innerWidth < 768);
     };
     checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
-    return () => window.removeEventListener('resize', checkIfMobile);
+    window.addEventListener("resize", checkIfMobile);
+    return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 
   useEffect(() => {
     setFile(null);
     setAudioFile(null);
-    setPrompt('');
-    setDiscordToken('');
-    setServerId('');
-    setChannelId('');
-    setError('');
+    setPrompt("");
+    setDiscordToken("");
+    setServerId("");
+    setChannelId("");
+    setError("");
     setAnalysisResults([]);
   }, [selectedPlatform]);
 
@@ -103,10 +103,10 @@ export default function AnalyzePage() {
       const files = e.target.files;
       if (files && files.length > 0) {
         setFile(files[0]);
-        setError('');
+        setError("");
       }
     } catch (err) {
-      setError('Error uploading file. Please try again.');
+      setError("Error uploading file. Please try again.");
     }
   };
 
@@ -115,10 +115,10 @@ export default function AnalyzePage() {
       const files = e.target.files;
       if (files && files.length > 0) {
         setAudioFile(files[0]);
-        setError('');
+        setError("");
       }
     } catch (err) {
-      setError('Error uploading audio file. Please try again.');
+      setError("Error uploading audio file. Please try again.");
     }
   };
 
@@ -129,19 +129,19 @@ export default function AnalyzePage() {
         : [...prev, instanceId]
     );
   };
-//
+  //
   const handleAnalyze = async () => {
     if (!prompt) {
-      setError('Please enter a prompt for analysis.');
+      setError("Please enter a prompt for analysis.");
       return;
     }
     setIsLoading(true);
-    setError('');
+    setError("");
     try {
       let response;
-      const apiUrl = 'https://crimesift-backend.onrender.com';
+      const apiUrl = "https://crimesift-backend.onrender.com";
 
-      if (selectedPlatform === 'discord') {
+      if (selectedPlatform === "discord") {
         response = await axios.post(`${apiUrl}/analyzeDiscord`, {
           time: Math.floor(Date.now() / 1000),
           prompt,
@@ -151,10 +151,10 @@ export default function AnalyzePage() {
         });
       } else {
         const formData = new FormData();
-        formData.append('time', Math.floor(Date.now() / 1000).toString());
-        formData.append('prompt', prompt);
+        formData.append("time", Math.floor(Date.now() / 1000).toString());
+        formData.append("prompt", prompt);
         if (file) {
-          formData.append('chatData', file);
+          formData.append("chatData", file);
         }
 
         response = await axios.post(
@@ -164,7 +164,7 @@ export default function AnalyzePage() {
           formData,
           {
             headers: {
-              'Content-Type': 'multipart/form-data',
+              "Content-Type": "multipart/form-data",
             },
           }
         );
@@ -184,9 +184,9 @@ export default function AnalyzePage() {
       });
 
       // Redirect to the reports page
-      router.push('/reports');
+      router.push("/reports");
     } catch (err) {
-      setError('An error occurred during analysis. Please try again.');
+      setError("An error occurred during analysis. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -194,7 +194,7 @@ export default function AnalyzePage() {
 
   const renderPlatformContent = () => {
     switch (selectedPlatform) {
-      case 'discord':
+      case "discord":
         return (
           <div className="space-y-6 mb-6 animate-fade-in">
             <div className="space-y-2">
@@ -203,39 +203,39 @@ export default function AnalyzePage() {
             </div>
           </div>
         );
-        // return (
-        //   <div className="space-y-6 mb-6 animate-fade-in">
-        //     <div className="space-y-2">
-        //       <Label htmlFor="discordToken">Discord Bot Token</Label>
-        //       <Input
-        //         id="discordToken"
-        //         value={discordToken}
-        //         onChange={(e) => setDiscordToken(e.target.value)}
-        //         placeholder="Enter your Discord bot token"
-        //       />
-        //     </div>
-        //     <div className="space-y-2">
-        //       <Label htmlFor="serverId">Server ID</Label>
-        //       <Input
-        //         id="serverId"
-        //         value={serverId}
-        //         onChange={(e) => setServerId(e.target.value)}
-        //         placeholder="Enter the server ID"
-        //       />
-        //     </div>
-        //     <div className="space-y-2">
-        //       <Label htmlFor="channelId">Channel ID</Label>
-        //       <Input
-        //         id="channelId"
-        //         value={channelId}
-        //         onChange={(e) => setChannelId(e.target.value)}
-        //         placeholder="Enter the channel ID"
-        //       />
-        //     </div>
-        //   </div>
-        // );
-      case 'instagram':
-      case 'whatsapp':
+      // return (
+      //   <div className="space-y-6 mb-6 animate-fade-in">
+      //     <div className="space-y-2">
+      //       <Label htmlFor="discordToken">Discord Bot Token</Label>
+      //       <Input
+      //         id="discordToken"
+      //         value={discordToken}
+      //         onChange={(e) => setDiscordToken(e.target.value)}
+      //         placeholder="Enter your Discord bot token"
+      //       />
+      //     </div>
+      //     <div className="space-y-2">
+      //       <Label htmlFor="serverId">Server ID</Label>
+      //       <Input
+      //         id="serverId"
+      //         value={serverId}
+      //         onChange={(e) => setServerId(e.target.value)}
+      //         placeholder="Enter the server ID"
+      //       />
+      //     </div>
+      //     <div className="space-y-2">
+      //       <Label htmlFor="channelId">Channel ID</Label>
+      //       <Input
+      //         id="channelId"
+      //         value={channelId}
+      //         onChange={(e) => setChannelId(e.target.value)}
+      //         placeholder="Enter the channel ID"
+      //       />
+      //     </div>
+      //   </div>
+      // );
+      case "instagram":
+      case "whatsapp":
         return (
           <div className="space-y-6 mb-6 animate-fade-in">
             <div className="space-y-2">
@@ -291,7 +291,7 @@ export default function AnalyzePage() {
                 </Button>
                 {isPlatformBarOpen && (
                   <div className="absolute z-10 w-full mt-1 bg-background border rounded-md shadow-lg animate-fade-in">
-                    {['discord', 'instagram', 'whatsapp'].map((platform) => (
+                    {["discord", "instagram", "whatsapp"].map((platform) => (
                       <Button
                         key={platform}
                         variant="ghost"
@@ -351,7 +351,7 @@ export default function AnalyzePage() {
           className="w-full animate-pulse-slow"
           disabled={isLoading}
         >
-          {isLoading ? 'Analyzing...' : 'Analyze'}
+          {isLoading ? "Analyzing..." : "Analyze"}
         </Button>
       </div>
 
@@ -374,7 +374,7 @@ export default function AnalyzePage() {
               </Button>
               {expandedInstances.includes(result.instance_ID) && (
                 <Timeline>
-                  {result['context-before'].map((item, index) => (
+                  {result["context-before"].map((item, index) => (
                     <TimelineItem
                       key={`before-${index}`}
                       time={new Date(item.time * 1000).toLocaleString()}
@@ -392,7 +392,7 @@ export default function AnalyzePage() {
                       type="flagged"
                     />
                   ))}
-                  {result['context-after'].map((item, index) => (
+                  {result["context-after"].map((item, index) => (
                     <TimelineItem
                       key={`after-${index}`}
                       time={new Date(item.time * 1000).toLocaleString()}
@@ -421,16 +421,22 @@ export default function AnalyzePage() {
         </div>
       )}
 
-      {activeTab === 'platforms' && (
-        <div className="space-y-4 mt-8 animate-fade-in">
-          <h2 className="text-xl font-semibold">
-            Input Data Retrieval Tutorial
-          </h2>
-          <VideoDialog
-            src={`/${selectedPlatform}-tutorial.mp4`}
-            platform={selectedPlatform}
-          />
-        </div>
+      {selectedPlatform === "discord" ? (
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/ovLFCM10m_Q"
+          title="Discord Tutorial Video"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="object-cover rounded-lg mx-auto"
+        ></iframe>
+      ) : (
+        <VideoDialog
+          src={`/${selectedPlatform}-tutorial.mp4`}
+          platform={selectedPlatform}
+        />
       )}
     </div>
   );
