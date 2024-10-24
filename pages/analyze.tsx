@@ -198,34 +198,42 @@ export default function AnalyzePage() {
         return (
           <div className="space-y-6 mb-6 animate-fade-in">
             <div className="space-y-2">
-              <Label htmlFor="discordToken">Discord Bot Token</Label>
-              <Input
-                id="discordToken"
-                value={discordToken}
-                onChange={(e) => setDiscordToken(e.target.value)}
-                placeholder="Enter your Discord bot token"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="serverId">Server ID</Label>
-              <Input
-                id="serverId"
-                value={serverId}
-                onChange={(e) => setServerId(e.target.value)}
-                placeholder="Enter the server ID"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="channelId">Channel ID</Label>
-              <Input
-                id="channelId"
-                value={channelId}
-                onChange={(e) => setChannelId(e.target.value)}
-                placeholder="Enter the channel ID"
-              />
+              <Label htmlFor="fileUpload">Upload Chat Log</Label>
+              <Input id="fileUpload" type="file" onChange={handleFileChange} />
             </div>
           </div>
         );
+        // return (
+        //   <div className="space-y-6 mb-6 animate-fade-in">
+        //     <div className="space-y-2">
+        //       <Label htmlFor="discordToken">Discord Bot Token</Label>
+        //       <Input
+        //         id="discordToken"
+        //         value={discordToken}
+        //         onChange={(e) => setDiscordToken(e.target.value)}
+        //         placeholder="Enter your Discord bot token"
+        //       />
+        //     </div>
+        //     <div className="space-y-2">
+        //       <Label htmlFor="serverId">Server ID</Label>
+        //       <Input
+        //         id="serverId"
+        //         value={serverId}
+        //         onChange={(e) => setServerId(e.target.value)}
+        //         placeholder="Enter the server ID"
+        //       />
+        //     </div>
+        //     <div className="space-y-2">
+        //       <Label htmlFor="channelId">Channel ID</Label>
+        //       <Input
+        //         id="channelId"
+        //         value={channelId}
+        //         onChange={(e) => setChannelId(e.target.value)}
+        //         placeholder="Enter the channel ID"
+        //       />
+        //     </div>
+        //   </div>
+        // );
       case 'instagram':
       case 'whatsapp':
         return (
