@@ -37,7 +37,7 @@ function VideoDialog({ src, platform }: VideoDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="relative aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer group w-full">
+        <div className="relative aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer group w-1/2 h-1/2 justify-center">
           <video
             src={src}
             className="w-full h-full object-cover rounded-lg"
