@@ -425,7 +425,7 @@ export default function AnalyzePage() {
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/ovLFCM10m_Q"
+          src="https://www.youtube.com/embed/9Iy3o-B_ptE"
           title="Discord Tutorial Video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

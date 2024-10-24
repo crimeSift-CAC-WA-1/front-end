@@ -111,8 +111,8 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-          Endorsement by Seattle FBI Taskforce Officer / Kirkland PD Officer
+        <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-center">
+          Endorsement by Seattle FBI Taskforce Officer
         </h2>
         <div className="flex justify-center">
           <Dialog>
@@ -157,6 +157,8 @@ export default function Home() {
             className="text-xl md:text-2xl font-semibold mb-4 cursor-pointer flex items-center"
             onClick={toggleCollapse}
           >
+            <br />
+            <br />
             <span
               className={`mr-2 transform ${
                 isCollapsed ? "rotate-0" : "rotate-180"
@@ -164,7 +166,7 @@ export default function Home() {
             >
               {isCollapsed ? <ChevronDown /> : <ChevronUp />}
             </span>
-            AI summary of the conversation
+            AI Summary
           </h4>
           {!isCollapsed && (
             <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
