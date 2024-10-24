@@ -139,7 +139,7 @@ export default function AnalyzePage() {
     setError('');
     try {
       let response;
-      const apiUrl = 'https://cac.varram.me';
+      const apiUrl = 'https://crimesift-backend.onrender.com';
 
       if (selectedPlatform === 'discord') {
         response = await axios.post(`${apiUrl}/analyzeDiscord`, {
