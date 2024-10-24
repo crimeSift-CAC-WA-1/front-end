@@ -23,25 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   return (
-    <ClerkProvider 
-      {...pageProps}
-      appearance={{
-        baseTheme: undefined,
-        variables: {
-          colorPrimary: 'hsl(221.2 83.2% 53.3%)',
-          colorTextOnPrimaryBackground: 'white',
-        },
-        elements: {
-          card: 'shadow-none bg-background',
-          headerTitle: 'hidden',
-          headerSubtitle: 'hidden',
-          socialButtonsBlockButton: 'border-2 border-muted-foreground text-foreground hover:bg-muted transition-colors',
-          formFieldLabel: 'text-foreground font-medium',
-          formFieldInput: 'bg-muted border-2 border-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary transition-shadow',
-          footerActionLink: 'text-primary hover:text-primary/90 transition-colors',
-        },
-      }}
-    >
+    <ClerkProvider {...pageProps}>
       <ReportsProvider>
         <ThemeProvider
           attribute="class"
