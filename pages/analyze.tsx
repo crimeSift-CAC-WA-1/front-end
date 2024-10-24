@@ -427,7 +427,6 @@ export default function AnalyzePage() {
           height="315"
           src="https://www.youtube.com/embed/ovLFCM10m_Q"
           title="Discord Tutorial Video"
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           className="object-cover rounded-lg mx-auto"
