@@ -1,19 +1,20 @@
 import { authMiddleware } from '@clerk/nextjs';
-
+ 
 export default authMiddleware({
+  // Add more public routes as needed
   publicRoutes: [
-    '/',
-    '/sign-in',
-    '/sign-up',
-    '/api/trpc(.*)',
-    '/api(.*)',
-    '/_next(.*)',
-    '/favicon.ico',
-    '/assets(.*)',
+    "/",
+    "/sign-in",
+    "/sign-up",
+    "/api/trpc/(.*)",
+    "/api/(.*)",
   ],
-  ignoredRoutes: ['/((?!api|trpc))(_next.*|.+.[w]+$)'],
+  ignoredRoutes: [
+    "/((?!api|trpc))(_next|.+..+)(.+)",
+    "/api/webhook/(.*)"
+  ],
 });
-
+ 
 export const config = {
-  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };
