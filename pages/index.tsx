@@ -80,7 +80,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
           {
             icon: Upload,
@@ -96,11 +96,6 @@ export default function Home() {
             icon: FileText,
             title: "Generate Reports",
             description: "Comprehensive analysis reports",
-          },
-          {
-            icon: Headphones,
-            title: "Analyze Audio",
-            description: "Process voice messages and audio files",
           },
         ].map((feature, index) => (
           <Card key={index} className="card-hover">
@@ -149,7 +144,7 @@ export default function Home() {
 
       <section className="mt-8">
         <h3 className="text-xl md:text-2xl font-semibold mb-4">
-          Summarized Interview with FBI Detective
+          Summarized Interview:
         </h3>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
           <audio controls className="w-full mb-4">
@@ -173,7 +168,7 @@ export default function Home() {
           </h4>
           {!isCollapsed && (
             <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
-              {`This conversation is between two police detectives and a group of students who have developed an AI tool to analyze large datasets of text messages, which could be useful in law enforcement investigations.
+              {`This conversation is between an FBI detective detectives and a group of students who have developed an AI tool to analyze large datasets of text messages, which could be useful in law enforcement investigations.
 
           The students explain their AI model can process huge chat logs, flagging messages relevant to specific queries, such as threats of school violence or discussions of drug sales. This drastically shortens the time detectives need to spend manually reviewing messages. They initially used a "dolphin AI" model but switched to Google AI due to concerns about terms of service and limitations of other models. Their tool can also parse Discord, WhatsApp, Telegram, and Signal chats, and they offer to develop custom export tools for platforms like Discord, which lack built-in options. They even suggest expanding the tool to analyze phone calls and audio files, assessing tone and language nuances beyond just keywords.
 

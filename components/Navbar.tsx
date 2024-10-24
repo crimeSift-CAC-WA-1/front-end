@@ -3,9 +3,10 @@ import { useRouter } from 'next/router';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ModeToggle } from '@/components/mode-toggle';
-import { FileSearch, Github, Menu } from 'lucide-react';
+import { FileSearch, Menu } from 'lucide-react';
 import { useState } from 'react';
 import { useAuth, UserButton } from '@clerk/nextjs';
+import { SiGithub } from 'react-icons/si'; // Import GitHub icon from react-icons
 
 const Navbar = () => {
   const router = useRouter();
@@ -18,6 +19,10 @@ const Navbar = () => {
     { href: '/reports', label: 'Reports' },
     { href: '/username-search', label: 'Username Search' },
   ];
+
+  const handleNavigation = (href: string) => {
+    window.location.href = href;
+  };
 
   return (
     <nav className="bg-background border-b sticky top-0 z-10">
@@ -39,7 +44,7 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <button
                   key={item.href}
-                  onClick={() => router.push(item.href)}
+                  onClick={() => handleNavigation(item.href)}
                   className={cn(
                     'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200',
                     router.pathname === item.href
@@ -65,7 +70,7 @@ const Navbar = () => {
                 size="sm"
                 className="ml-4 flex items-center"
               >
-                <Github className="mr-2 h-5 w-5 text-foreground" />
+                <SiGithub className="mr-2 h-5 w-5 text-foreground" />
                 GitHub
               </Button>
             </Link>
@@ -75,7 +80,7 @@ const Navbar = () => {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => router.push('/sign-in')}
+                onClick={() => handleNavigation('/sign-in')}
               >
                 Sign In
               </Button>
@@ -104,7 +109,10 @@ const Navbar = () => {
                     ? 'bg-primary text-primary-foreground'
                     : 'text-foreground hover:bg-accent hover:text-accent-foreground'
                 )}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  handleNavigation(item.href);
+                }}
               >
                 {item.label}
               </Link>
@@ -114,7 +122,10 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                handleNavigation('https://github.com/yourusername/crimesift');
+              }}
             >
               GitHub
             </Link>
