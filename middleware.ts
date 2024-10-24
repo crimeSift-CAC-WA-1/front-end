@@ -16,5 +16,5 @@ export default authMiddleware({
 });
 
 export const config = {
-  matcher: ['/never'], // Protect /analyze and /reports routes
+  matcher: ['/never'], 
 };
