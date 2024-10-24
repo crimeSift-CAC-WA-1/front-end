@@ -8,7 +8,6 @@
 - Inspiration
 - [Technical Challenges](#technical-challenges)
 - [Future Improvements](#future-improvements)
-- Contributing
 - License
 
 ## Introduction 📝
@@ -76,9 +75,6 @@ All of our team members love to watch crime podcasts on the news and YouTube to 
 - **Custom AI Training**: Enhance the accuracy of detecting crime-related messages using machine learning techniques.
 - **Audio Analysis**: Implement a speech recognition model for analyzing audio files.
 - **Real-World Testing**: Aim to have the Kirkland Police Department use our app in a real investigation.
-
-## Contributing 🤝
-We welcome contributions from the community. Please read our [contributing guidelines](CONTRIBUTING.md) for more information.
 
 ## License 📜
 This project is licensed under the MIT License. See the LICENSE file for details.
