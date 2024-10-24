@@ -38,17 +38,6 @@ const SignUpPage = () => {
             }}
             redirectUrl="/"
           />
-          <div className="mt-6 text-center">
-            <p className="text-sm text-muted-foreground">
-              Already have an account?{' '}
-              <Link
-                href="/sign-in"
-                className="text-primary hover:text-primary/90 transition-colors font-medium"
-              >
-                Sign in
-              </Link>
-            </p>
-          </div>
         </CardContent>
       </Card>
     </div>

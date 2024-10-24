@@ -55,7 +55,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-2">
             <ModeToggle />
             <Link
-              href="https://github.com/yourusername/crimesift"
+              href="https://github.com/crimeSift-CAC-WA-1/front-end"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex"
