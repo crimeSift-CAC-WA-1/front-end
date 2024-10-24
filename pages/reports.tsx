@@ -33,24 +33,6 @@ export default function ReportsPage() {
     );
   };
 
-  const printTimeline = (reportId: string, instanceId: string) => {
-    const printContent = document.getElementById(`timeline-${reportId}-${instanceId}`);
-    const printWindow = window.open('', '', 'width=800,height=600');
-    if (printWindow) {
-      printWindow.document.write('<html><head><title>Print Timeline</title></head><body>');
-      if (printContent) {
-        printWindow.document.write(printContent.innerHTML);
-      } else {
-        console.error('Failed to find print content');
-      }
-      printWindow.document.write('</body></html>');
-      printWindow.document.close();
-      printWindow.print();
-    } else {
-      console.error('Failed to open print window');
-    }
-  };
-
   return (
     <div className="space-y-6 md:space-y-8 animate-fade-in">
       <h1 className="text-2xl md:text-3xl font-bold">Analysis Reports</h1>
@@ -105,7 +87,7 @@ export default function ReportsPage() {
               <CardContent>
                 <Timeline>
                   {report.results.map((result) => (
-                    <div key={result.instance_ID} className="mb-8" id={`timeline-${report.id}-${result.instance_ID}`}>
+                    <div key={result.instance_ID} className="mb-8">
                       <h3 className="text-lg font-semibold mb-2">
                         Instance {result.instance_ID}
                       </h3>
@@ -149,14 +131,6 @@ export default function ReportsPage() {
                           </a>
                         </div>
                       )}
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => printTimeline(report.id, result.instance_ID.toString())}
-                        className="mt-4"
-                      >
-                        Print Timeline
-                      </Button>
                     </div>
                   ))}
                 </Timeline>
