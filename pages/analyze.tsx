@@ -129,7 +129,7 @@ export default function AnalyzePage() {
         : [...prev, instanceId]
     );
   };
-
+//
   const handleAnalyze = async () => {
     if (!prompt) {
       setError('Please enter a prompt for analysis.');
